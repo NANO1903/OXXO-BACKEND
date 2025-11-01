@@ -6,13 +6,14 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   app.enableCors({
-    origin: 'http://localhost:3001',
+    origin: process.env.DEV_ORIGIN,
     credentials: true,
   });
   const config = new DocumentBuilder()
     .setTitle('OXXO API')
     .setDescription('API for OXXO Management')
     .setVersion('0.9')
+    .addBearerAuth()
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('api', app, document);
@@ -21,6 +22,6 @@ async function bootstrap() {
     forbidNonWhitelisted: true,
     transform: true
   }));
-  await app.listen(process.env.PORT ?? 3000);
+  await app.listen(process.env.PORT!);
 }
 bootstrap();

@@ -3,7 +3,6 @@ import { Manager } from "../../manager/entities/manager.entity";
 import { Region } from "../../regions/entities/region.entity";
 import { Employee } from "../../employees/entities/employee.entity";
 
-
 @Entity()
 export class Location {
     @PrimaryGeneratedColumn("increment")
@@ -15,7 +14,7 @@ export class Location {
     @Column("simple-array")
     locationLatLng!: number[];
 
-    @OneToOne(() => Manager, {eager: true})
+    @OneToOne(() => Manager, { eager: true })
     @JoinColumn({
         name: "managerId",
     })
