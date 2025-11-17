@@ -16,7 +16,6 @@ export class Location {
     locationLatLng!: number[];
 
     @OneToOne(() => Manager, {
-        nullable: true,
         eager: true,
     })
     @JoinColumn({
