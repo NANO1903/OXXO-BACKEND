@@ -114,7 +114,7 @@ export class EmployeesController {
     ] as Location[]
   })
   @Get('location/:id')
-  findAllLocations(@Param('id') id: string) {
+  findAllLocations(@Param('id') id: string) {   
     return this.employeesService.findByLocation(+id);
   }
   
