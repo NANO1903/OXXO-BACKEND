@@ -6,7 +6,8 @@ import { Employee } from "../../employees/entities/employee.entity";
 @Entity()
 export class Location {
     @PrimaryGeneratedColumn("increment")
-    locationId!: number;
+    locationId!: number | null;
+
     @Column("text")
     locationName!: string;
     @Column("text")
@@ -15,6 +16,7 @@ export class Location {
     locationLatLng!: number[];
 
     @OneToOne(() => Manager, {
+        nullable: true,
         eager: true,
     })
     @JoinColumn({
