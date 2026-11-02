@@ -48,7 +48,6 @@ export class EmployeesController {
   }
 
   @Auth(ROLES.MANAGER, ROLES.ADMIN)
-  @ApiParam({ name: 'uuid', required: true, description: 'Employee UUID', type: String })
   @ApiResponse({
     status: 200,
     example:
