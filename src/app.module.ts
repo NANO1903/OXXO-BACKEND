@@ -7,28 +7,32 @@ import { ManagerModule } from './manager/manager.module';
 import { LocationsModule } from './locations/locations.module';
 import { RegionsModule } from './regions/regions.module';
 import { AuthModule } from './auth/auth.module';
+import { ConfigModule } from '@nestjs/config/dist/config.module';
 
 @Module({
   imports: [
-    EmployeesModule, ProductsModule, 
+    EmployeesModule, ProductsModule,
+    ConfigModule.forRoot({
+      isGlobal: true,
+    }),
     TypeOrmModule.forRoot({
       type: 'postgres',
-      host: process.env.host,
-      port: process.env.port ? parseInt(process.env.port) : 5432,
-      username: 'postgres',
-      password: "NANO_fba$1903",
-      database: process.env.name,
+      host: process.env.DB_HOST,
+      port: process.env.DB_PORT ? parseInt(process.env.DB_PORT) : 5432,
+      username: process.env.DB_USERNAME,
+      password: process.env.DB_PASSWORD,
+      database: process.env.DB_NAME,
       entities: [],
       autoLoadEntities: true,
       synchronize: true,
-    }), 
-    ProvidersModule, 
-    ManagerModule, 
-    LocationsModule, 
-    RegionsModule, 
+    }),
+    ProvidersModule,
+    ManagerModule,
+    LocationsModule,
+    RegionsModule,
     AuthModule,
   ],
   controllers: [],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }
