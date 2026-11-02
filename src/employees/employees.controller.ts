@@ -33,7 +33,8 @@ export class EmployeesController {
   @Auth(ROLES.MANAGER, ROLES.EMPLOYEE)
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  uploadPhoto(@UploadedFile() file: Express.Multer.File) {
+  // uploadPhoto(@UploadedFile() file: Express.Multer.File) {
+  uploadPhoto(@UploadedFile() file: unknown) {
     console.log(file);
     return "OK";
   }
