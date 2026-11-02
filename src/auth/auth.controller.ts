@@ -7,7 +7,7 @@ import { ApiAuth } from 'src/auth/decorators/api.decorator';
 @ApiAuth()
 @Controller('auth')
 export class AuthController {
-  constructor(private readonly authService: AuthService) {}
+  constructor(private readonly authService: AuthService) { }
 
   @Post('signup')
   signup(@Body() createUserDto: CreateUserDto) {
