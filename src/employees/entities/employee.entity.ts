@@ -5,27 +5,27 @@ import { User } from "src/auth/entities/user.entity";
 @Entity()
 export class Employee {
     @PrimaryGeneratedColumn("uuid")
-    employeeId: string;
+    employeeId!: string;
     @Column({ type: "text"})
-    employeeName: string;
+    employeeName!: string;
     @Column({ type: "text"})
-    employeeLastName: string;
+    employeeLastName!: string;
     @Column({ type: "text"})
-    employeePhoneNumber: string;
+    employeePhoneNumber!: string;
     @Column({ type: "text", unique: true})
-    employeeEmail: string;
+    employeeEmail!: string;
     @Column({ type: "text", nullable: true})
-    employeePhoto: string;
+    employeePhoto!: string | null;
 
     @ManyToOne(() => Location, (location) => location.employees)
     @JoinColumn({
         name: "locationId",
     })
-    location: Location;
+    location!: Location;
 
     @OneToOne(() => User)
     @JoinColumn({
         name: "userId"
     })
-    user: User;
+    user!: User;
 }

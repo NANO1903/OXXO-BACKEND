@@ -6,21 +6,21 @@ export class CreateLocationDto {
     @ApiProperty({ type: String, description: "Location name", example: "OXXO Centro Sur", required: true, maxLength: 35, format: "text" })
     @IsString()
     @MaxLength(35)
-    locationName: string;
+    locationName!: string;
     
     @ApiProperty({ type: String, description: "Location address", example: "Prol. Bernardo Quintana 7001, Centro Sur, 76090 Santiago de Querétaro, Querétaro", required: true, maxLength: 120, format: "text" })
     @IsString()
     @MaxLength(120)
-    locationAddress: string;
+    locationAddress!: string;
     
     @ApiProperty({ type: Array, description: "Location latitude and longitude", example: [20.56894, -19.56515], required: true, format: "array", minItems: 2, maxItems: 2 })
     @IsArray()
     @ArrayNotEmpty()
-    locationLatLng: number[];
+    locationLatLng!: number[];
     
     @ApiPropertyOptional({ type: Region, description: "Location region" })
     @IsObject()
     @IsOptional()
-    region: Region;
+    region!: Region;
 }
 

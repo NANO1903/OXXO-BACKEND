@@ -5,28 +5,28 @@ import { User } from 'src/auth/entities/user.entity';
 @Entity()
 export class Manager {
     @PrimaryGeneratedColumn("uuid")
-    managerId: string;
+    managerId!: string;
     @Column("text")
-    managerNFullame: string
+    managerFullName!: string
     @Column("float")
-    managerSalary: number;
+    managerSalary!: number;
     @Column({
         type: "text",
         unique: true,
     })
-    managerEmail: string;
+    managerEmail!: string;
     @Column({
         type: "text",
         unique: true,
     })
-    managerPhoneNumber: string;
+    managerPhoneNumber!: string;
 
     @OneToOne(() => Location)
-    location: Location;
+    location!: Location;
 
     @OneToOne(() => User)
     @JoinColumn({
         name: "userId"
     })
-    usre: User;
+    user!: User;
 }

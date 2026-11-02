@@ -6,25 +6,25 @@ export class CreateEmployeeDto{
     @ApiProperty({ type: String, description: "Employee name", example: "Juan", required: true, maxLength: 40, format: "text" })
     @IsString()
     @MaxLength(40)
-    employeeName: string;
+    employeeName!: string;
     
     @ApiProperty({ type: String, description: "Employee last name", example: "Pérez", required: true, maxLength: 40, format: "text" })
     @IsString()
     @MaxLength(40)
-    employeeLastName: string;
+    employeeLastName!: string;
     
     @ApiProperty({ type: String, description: "Employee phone number", example: "4424456478", required: true, maxLength: 15, format: "phone" })
     @IsString()
     @MaxLength(15)
-    employeePhoneNumber: string;
+    employeePhoneNumber!: string;
     
     @ApiProperty({ type: String, description: "Employee email", example: "jperez@gmail.com", required: true, format: "email" })
     @IsString()
     @IsEmail()
-    employeeEmail: string;
+    employeeEmail!: string;
     
     @ApiPropertyOptional({ type: Location, description: "Employee location" })
     @IsOptional()
     @IsObject()
-    location: Location;
+    location?: Location;
 }   
